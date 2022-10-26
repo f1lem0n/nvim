@@ -34,3 +34,4 @@ based software using apt package manager.**
 git clone https://github.com/f1lem0n/nvim.git ~/.config/nvim
 bash install ~/.config/nvim/install.sh
 ```
+## ![Changelog](https://github.com/f1lem0n/nvim/blob/main/changelog.md)
