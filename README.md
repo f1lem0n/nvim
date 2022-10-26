@@ -33,6 +33,6 @@ based software using apt package manager.**
 ## Installation
 
 ```bash
-git clone git@github.com:f1lem0n/nvim.git ~/.config/nvim
+git clone https://github.com/f1lem0n/nvim.git ~/.config/nvim
 bash install ~/.config/nvim/install.sh
 ```
