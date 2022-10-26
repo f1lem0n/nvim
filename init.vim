@@ -26,8 +26,8 @@ call plug#end()
 "Autocmds
 autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
-autocmd InsertEnter * highlight CursorLine cterm=NONE ctermbg=darkmagenta
-autocmd InsertEnter * highlight CursorLineNr cterm=NONE ctermbg=darkmagenta
+autocmd InsertEnter * highlight CursorLine cterm=NONE 
+autocmd InsertEnter * highlight CursorLineNr cterm=NONE
 autocmd InsertLeave * highlight CursorLine cterm=NONE ctermbg=darkblue
 autocmd InsertLeave * highlight CursorLineNr cterm=NONE ctermbg=darkblue
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
