@@ -1,18 +1,16 @@
 # f1lem0n's oldschool NEOVIM build
 
-## Table Of Contents
-
-- [About](#about)
-- [Version](#version)
-- [Installation](#installation)
-
 ## About
+
+### General
 
 This is my oldschool looking, high-contrast NEOVIM build.
 It's mainly used for Python, Snakemake, $\LaTeX$ and Markdown.
 The full list of plugins is available in ***init.vim*** file.
 
-**Error info:** *After the installation NEOVIM should open up.
+### Errors
+
+*After the installation NEOVIM should open up.
 If this is not the case, then you should see the error message.
 The message shall be saved in **install.err** file in case
 you would like to analyse it further.
