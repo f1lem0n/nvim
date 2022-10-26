@@ -19,24 +19,13 @@ Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ervandew/supertab'
 Plug 'raivivek/vim-snakemake'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 call plug#end()
 
 
-"Autocmds
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
-autocmd InsertEnter * highlight CursorLine cterm=NONE 
-autocmd InsertEnter * highlight CursorLineNr cterm=NONE
-autocmd InsertLeave * highlight CursorLine cterm=NONE ctermbg=darkblue
-autocmd InsertLeave * highlight CursorLineNr cterm=NONE ctermbg=darkblue
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-                       \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
-autocmd BufEnter * call ncm2#enable_for_buffer()
-
-
 "Basic options
+filetype plugin indent on
 set number
 set tabstop=4
 set shiftwidth=4
@@ -52,7 +41,23 @@ set completeopt=noinsert,menuone,noselect
 set cursorline
 let g:python3_host_prog="/usr/bin/python3"
 let g:SuperTabDefaultCompletionType = "<c-n>"
-inoremap , ,<space>
+let g:mkdp_auto_start = 1
+let g:mkdp_auto_close = 0
+let g:mkdp_filetypes = ['markdown']
+
+
+"Autocmds
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd p
+autocmd InsertEnter * highlight CursorLine cterm=NONE 
+autocmd InsertEnter * highlight CursorLineNr cterm=NONE
+autocmd InsertLeave * highlight CursorLine cterm=NONE ctermbg=darkblue
+autocmd InsertLeave * highlight CursorLineNr cterm=NONE ctermbg=darkblue
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+                       \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
 
 ""Tweaks
 colorscheme slate
