@@ -41,8 +41,8 @@ set completeopt=noinsert,menuone,noselect
 set cursorline
 let g:python3_host_prog="/usr/bin/python3"
 let g:SuperTabDefaultCompletionType = "<c-n>"
-let g:mkdp_auto_start = 1
-let g:mkdp_auto_close = 0
+let g:mkdp_auto_start = 0
+let g:mkdp_auto_close = 1
 let g:mkdp_filetypes = ['markdown']
 
 
