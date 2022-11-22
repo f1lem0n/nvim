@@ -26,7 +26,7 @@ Enjoy using my build!
 based software using apt package manager.**
 
 - NEOVIM v0.4.4
-- build v1.2
+- build v1.4
 
 ## Installation
 
