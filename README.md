@@ -6,7 +6,7 @@
 
 This is my oldschool looking, high-contrast NEOVIM build.
 It's mainly used for Python, Snakemake, $\LaTeX$ and Markdown.
-The full list of plugins is available in ![init.vim](https://github.com/f1lem0n/nvim/blob/main/init.vim) file.
+The full list of plugins is available in **init.vim** file.
 
 ### Errors
 
