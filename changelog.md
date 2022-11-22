@@ -14,6 +14,8 @@
 
 - LaTeX binds
 - filetype detection
+- python support
+- snakemake support
 
 ### Changed
 
