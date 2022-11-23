@@ -128,7 +128,7 @@ autocmd BufNewFile *.tex silent exe ':!cat ~/.config/nvim/templates/tex > %' | e
 augroup tex
 
 """Compile
-autocmd FileType tex         nnoremap         <F10>             :w<Enter>:!pdflatex<Space>%<Space>&&<Space>bibtex<Space>*.aux<Space>&&pdflatex<Space>%<Space>&&<Space>pdflatex<Space>%<Space>&&<Space>mv<Space>*.pdf<Space>out/<Space>&&<Space>mv<Space>*.log<Space>*.out<Space>*.aux<Space>*.bbl<Space>*.blg<Space>aux/<Enter>
+autocmd FileType tex         nnoremap         <F10>             :w<Enter>:!pdflatex<Space>%<Space>&&<Space>bibtex<Space>*.aux<Space>&&pdflatex<Space>%<Space>&&<Space>pdflatex<Space>%<Space>&&rm<Space>-rf<Space>out<Space>aux<Space>&&mkdir<Space>out<Space>aux<Space>&&<Space>mv<Space>*.pdf<Space>out/<Space>&&<Space>mv<Space>*.log<Space>*.out<Space>*.aux<Space>*.bbl<Space>*.blg<Space>aux/<Enter>
 
 """Jump to <>
 autocmd FileType tex         inoremap         <Tab><Tab>        <Esc>/<>/n<Enter>vldi<Esc>a
