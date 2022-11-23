@@ -1,0 +1,62 @@
+\documentclass[12pt, a4paper]{article}
+
+%PACKS------------------------------
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[british, polish]{babel}
+\usepackage{geometry}
+\usepackage{gensymb}
+\usepackage{upgreek}
+\usepackage{bm}
+\usepackage{lipsum}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[table, xcdraw]{xcolor}
+\usepackage{mathptmx}
+\usepackage{textcomp}
+\usepackage{adjustbox}
+\usepackage{amsmath}
+\usepackage[automake]{glossaries-extra}
+
+%SETTINGS---------------------------
+
+% \setmainfont{Times New Roman}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor={blue!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+% \linespread{1.25}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+\geometry{left=2.54cm, right=2.54cm, top=2.54cm, bottom=2.54cm}
+\newcommand*{\myfont}{\fontfamily{pcr}\selectfont}
+
+\title{<>}
+\author{<>}
+\date{<>}
+
+\makeglossaries
+
+% \newacronym{mfc}{MFC}{microbial fuel cell}
+
+\begin{document}
+
+\maketitle
+
+% \begin{abstract}
+%     \noindent
+%     <>
+% \end{abstract}
+
+<>
+
+\bibliographystyle{unsrt}
+\bibliography{<>}
+
+\end{document}
