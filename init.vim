@@ -131,27 +131,30 @@ augroup tex
 autocmd FileType tex         nnoremap         <F10>             :w<Enter>:!pdflatex<Space>%<Space>&&<Space>bibtex<Space>*.aux<Space>&&pdflatex<Space>%<Space>&&<Space>pdflatex<Space>%<Space>&&rm<Space>-rf<Space>out<Space>aux<Space>&&mkdir<Space>out<Space>aux<Space>&&<Space>mv<Space>*.pdf<Space>out/<Space>&&<Space>mv<Space>*.log<Space>*.out<Space>*.aux<Space>*.bbl<Space>*.blg<Space>aux/<Enter>
 
 """Jump to <>
-autocmd FileType tex         inoremap         <Tab><Tab>        <Esc>/<>/n<Enter>vldi<Esc>a
-autocmd FileType tex         nnoremap         <Tab><Tab>        /<>/n<Enter>vldi<Esc>a
+autocmd FileType tex         inoremap         <Space><Space>    <Esc>/<>/n<Enter>vldi
+autocmd FileType tex         nnoremap         <Space><Space>    /<>/n<Enter>vldi
 
 """In-text
-autocmd FileType tex         inoremap         ;i                \textit{}<Space><Space><><Esc>T{i<Esc>a
-autocmd FileType tex         inoremap         ;b                \textbf{}<Space><Space><><Esc>T{i<Esc>a
-autocmd FileType tex         inoremap         ;r                \ref{}<Space><Space><><Esc>T{i<Esc>a
-autocmd FileType tex         inoremap         ;c                \cite{}<Space><Space><><Esc>T{i<Esc>a
-autocmd FileType tex         inoremap         ;ni               \item<Space><Esc>a
-autocmd FileType tex         inoremap         ;<Space>          ~<Esc>a
+autocmd FileType tex         inoremap         ;i                \textit{}<Space><><Esc>T{i
+autocmd FileType tex         inoremap         ;b                \textbf{}<Space><><Esc>T{i
+autocmd FileType tex         inoremap         ;r                \ref{}<Space><><Esc>T{i
+autocmd FileType tex         inoremap         ;c                \cite{}<Space><><Esc>T{i
+autocmd FileType tex         inoremap         ;ni               \item<Space>
+autocmd FileType tex         inoremap         ;<Space>          ~
+autocmd FileType tex         inoremap         ;sub              \textsubscript{}<Space><><Esc>T{i
+autocmd FileType tex         inoremap         ;sup              \textsuperscript{}<Space><><Esc>T{i
 
 """Envs
-autocmd FileType tex         inoremap         ;sec              <Enter><Enter>\section{}<Enter><Enter><><Esc>2kf}i<Esc>a
-autocmd FileType tex         inoremap         ;ssec             <Enter><Enter>\subsection{}<Enter><Enter><><Esc>2kf}i<Esc>a
-autocmd FileType tex         inoremap         ;sssec            <Enter><Enter>\subsubsection{}<Enter><Enter><><Esc>2kf}i<Esc>a
-autocmd FileType tex         inoremap         ;fig              <Enter><Enter>\begin{figure}[]<Enter><Tab>\centering<Enter>\includegraphics[width=\columnwidth]{<>}<Enter>\caption{<>}<Enter>\label{<>}<Enter>\end{figure}<Enter><Enter><><Esc>7kf]i<Esc>a
-autocmd FileType tex         inoremap         ;eq               <Enter><Enter>\begin{equation}<Enter><Enter>\label{<>}<Enter>\end{equation}<Enter><Enter><><Esc>4ki<Tab><Esc>a
-autocmd FileType tex         inoremap         ;ls               <Enter><Enter>\begin{itemize}<Enter><Enter>\end{itemize}<Enter><><Esc>2ki<Tab><Esc>a
-autocmd FileType tex         inoremap         ;nls              <Enter><Enter>\begin{enumerate}<Enter><Enter>\end{enumerate}<Enter><><Esc>2ki<Tab><Esc>a
+autocmd FileType tex         inoremap         ;sec              <Esc>$a<Enter><Enter>\section{}<Enter><Enter><><Esc>2kf}i
+autocmd FileType tex         inoremap         ;ssec             <Esc>$a<Enter><Enter>\subsection{}<Enter><Enter><><Esc>2kf}i
+autocmd FileType tex         inoremap         ;sssec            <Esc>$a<Enter><Enter>\subsubsection{}<Enter><Enter><><Esc>2kf}i
+autocmd FileType tex         inoremap         ;fig              <Esc>$a<Enter><Enter>\begin{figure}[]<Enter><Tab>\centering<Enter>\includegraphics[width=\columnwidth]{<>}<Enter>\caption{<>}<Enter>\label{<>}<Enter>\end{figure}<Enter><Enter><><Esc>7kf]i
+autocmd FileType tex         inoremap         ;eq               <Esc>$a<Enter><Enter>\begin{equation}<Enter><Enter>\label{<>}<Enter>\end{equation}<Enter><Enter><><Esc>4ki<Tab>
+autocmd FileType tex         inoremap         ;ls               <Esc>$a<Enter><Enter>\begin{itemize}<Enter><Enter>\end{itemize}<Enter><><Esc>2ki<Tab>
+autocmd FileType tex         inoremap         ;nls              <Esc>$a<Enter><Enter>\begin{enumerate}<Enter><Enter>\end{enumerate}<Enter><><Esc>2ki<Tab>
+autocmd FileType tex         inoremap         ;abs              <Esc>$a<Enter><Enter>\begin{abstract}<Enter><Tab><><Enter>\end{abstract}<Enter><><Esc>2ki<Tab>
 
 """Env-in-env
-autocmd FileType tex         inoremap         ;spl              \begin{split}<Enter><Enter>\end{split}<Esc>ki<Tab><Tab><Esc>a
+autocmd FileType tex         inoremap         ;spl              \begin{split}<Enter><Enter>\end{split}<Esc>ki<Tab><Tab>
 
 augroup END

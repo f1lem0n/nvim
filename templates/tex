@@ -18,19 +18,16 @@
 \usepackage{textcomp}
 \usepackage{adjustbox}
 \usepackage{amsmath}
-\usepackage[automake]{glossaries-extra}
 
 %SETTINGS---------------------------
 
 % \setmainfont{Times New Roman}
-
 \hypersetup{
     colorlinks=true,
     linkcolor={blue!50!black},
     citecolor={blue!50!black},
     urlcolor={blue!80!black}
 }
-
 % \linespread{1.25}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1em}
@@ -41,20 +38,11 @@
 \author{<>}
 \date{<>}
 
-\makeglossaries
-
-% \newacronym{mfc}{MFC}{microbial fuel cell}
+%DOCUMENT---------------------------
 
 \begin{document}
 
-\maketitle
-
-% \begin{abstract}
-%     \noindent
-%     <>
-% \end{abstract}
-
-<>
+\maketitle <>
 
 \bibliographystyle{unsrt}
 \bibliography{<>}
