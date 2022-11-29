@@ -34,8 +34,8 @@ set encoding=utf-8
 set scrolloff=10
 set updatetime=100
 set cursorline
-set nowrap
 set statusline="%f%m%r%h%w [%Y] [0x%02.2B]%< %F%=%4v,%4l %3p%% of %L"
+set linebreak
 
 
 " Colors
@@ -54,11 +54,6 @@ set ignorecase
 set showmatch
 set hlsearch
 set smarttab
-
-
-" Autocomment
-autocmd BufRead * nnoremap <C-_> :Commentary<Enter><Enter>
-autocmd BufRead * nnoremap <C-\> :Commentary<Enter>k
 
 
 " Filetype detection
@@ -89,6 +84,22 @@ autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
 
 
+" Global Binds               MODE             YOUR KEY          EXECUTED COMMAND
+
+autocmd FileType *           inoremap         (                 ()<Space><><Esc>3hi
+autocmd FileType *           inoremap         [                 []<Space><><Esc>3hi
+autocmd FileType *           inoremap         {                 {}<Space><><Esc>3hi
+autocmd FileType *           inoremap         '                 ''<Space><><Esc>3hi
+autocmd FileType *           inoremap         "                 ""<Space><><Esc>3hi
+autocmd FileType *           inoremap         <Space><Space>    <Esc>/<>/n<Enter>vldi
+autocmd FileType *           nnoremap         <Space><Space>    /<>/n<Enter>vldi
+
+"""Autocomment
+autocmd BufRead * nnoremap <C-_> :Commentary<Enter><Enter>
+autocmd BufRead * nnoremap <C-\> :Commentary<Enter>k
+
+
+
 " Snakemake
 
 ""Binds                      MODE             YOUR KEY          EXECUTED COMMAND
@@ -112,6 +123,9 @@ autocmd FileType python set foldmethod=indent foldlevel=99
 
 augroup python
 
+autocmd FileType *           inoremap         ;'                '''<Enter><Enter>'''<Esc>ki
+autocmd FileType *           inoremap         ;"                """<Enter><Enter>"""<Esc>ki
+
 """Execute
 autocmd FileType python      nnoremap         <F10>             :w<Enter>:!python3<Space>%<Enter>
 
@@ -124,18 +138,15 @@ augroup END
 autocmd BufNewFile *.tex silent exe ':!cat ~/.config/nvim/templates/tex > %' | e
 
 ""Binds                      MODE             YOUR KEY          EXECUTED COMMAND
-
+ 
 augroup tex
 
 """Compile
-autocmd FileType tex         nnoremap         <F10>             :w<Enter>:!pdflatex<Space>%<Space>&&<Space>bibtex<Space>*.aux<Space>&&pdflatex<Space>%<Space>&&<Space>pdflatex<Space>%<Space>&&rm<Space>-rf<Space>out<Space>aux<Space>&&mkdir<Space>out<Space>aux<Space>&&<Space>mv<Space>*.pdf<Space>out/<Space>&&<Space>mv<Space>*.log<Space>*.out<Space>*.aux<Space>*.bbl<Space>*.blg<Space>aux/<Enter>
-
-"""Jump to <>
-autocmd FileType tex         inoremap         <Space><Space>    <Esc>/<>/n<Enter>vldi
-autocmd FileType tex         nnoremap         <Space><Space>    /<>/n<Enter>vldi
+autocmd FileType tex         nnoremap         <F10>             :w<Enter>:!rm<Space>-rf<Space>out<Space>aux<Space>&&pdflatex<Space>%<Space>&&<Space>&&mkdir<Space>out<Space>aux<Space>&&<Space>mv<Space>*.pdf<Space>out/<Space>&&<Space>mv<Space>*.log<Space>*.out<Space>*.aux<Space>*.bbl<Space>*.blg<Space>aux/<Space>&&bibtex<Space>aux/*.aux<Space>&&pdflatex<Space>%<Space>&&<Space>pdflatex<Space>%<Enter>
 
 """In-text
 autocmd FileType tex         inoremap         ;i                \textit{}<Space><><Esc>T{i
+autocmd FileType tex         inoremap         $                 $$<Space><><Esc>3hi
 autocmd FileType tex         inoremap         ;b                \textbf{}<Space><><Esc>T{i
 autocmd FileType tex         inoremap         ;r                \ref{}<Space><><Esc>T{i
 autocmd FileType tex         inoremap         ;c                \cite{}<Space><><Esc>T{i
