@@ -59,10 +59,10 @@ set smarttab
 " Filetype detection
 filetype on
 filetype plugin indent on
-au BufNewFile,BufRead *.tex set filetype=tex
-au BufNewFile,BufRead *.md set filetype=markdown
-au BufNewFile,BufRead *.py set filetype=python
-au BufNewFile,BufRead Snakefile set filetype=snakefile
+autocmd BufNewFile,BufRead *.tex set filetype=tex
+autocmd BufNewFile,BufRead *.md set filetype=markdown
+autocmd BufNewFile,BufRead *.py set filetype=python
+autocmd BufNewFile,BufRead Snakefile set filetype=snakefile
 
 
 " MDPreview
@@ -142,7 +142,7 @@ autocmd BufNewFile *.tex silent exe ':!cat ~/.config/nvim/templates/tex > %' | e
 augroup tex
 
 """Compile
-autocmd FileType tex         nnoremap         <F10>             :w<Enter>:!rm<Space>-rf<Space>out<Space>aux<Space>&&pdflatex<Space>%<Space>&&<Space>&&mkdir<Space>out<Space>aux<Space>&&<Space>mv<Space>*.pdf<Space>out/<Space>&&<Space>mv<Space>*.log<Space>*.out<Space>*.aux<Space>*.bbl<Space>*.blg<Space>aux/<Space>&&bibtex<Space>aux/*.aux<Space>&&pdflatex<Space>%<Space>&&<Space>pdflatex<Space>%<Enter>
+autocmd FileType tex         nnoremap         <F10>             :!rm -rf aux/ out/ && pdflatex % && bibtex *.aux && pdflatex % && pdflatex % && mkdir aux out && mv *.log *.out *.aux *.bbl *.blg aux/ && mv *.pdf out/<Enter>
 
 """In-text
 autocmd FileType tex         inoremap         ;i                \textit{}<Space><><Esc>T{i
