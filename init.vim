@@ -1,6 +1,6 @@
 " Plugins
 call plug#begin()
-
+ 
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'ap/vim-css-color'
@@ -20,13 +20,14 @@ Plug 'ncm2/ncm2-bufword'
 Plug 'ervandew/supertab'
 Plug 'raivivek/vim-snakemake'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'lervag/vimtex'
 
 call plug#end()
 
 
 " Basic options
 syntax on
-set number
+set number relativenumber
 set tabstop=4
 set shiftwidth=4
 set expandtab ts=4 sw=4 ai
@@ -35,7 +36,6 @@ set scrolloff=10
 set updatetime=100
 set cursorline
 set statusline="%f%m%r%h%w [%Y] [0x%02.2B]%< %F%=%4v,%4l %3p%% of %L"
-set linebreak
 
 
 " Colors
@@ -45,8 +45,7 @@ hi CursorLineNr cterm=NONE ctermbg=darkblue
 autocmd InsertEnter * highlight CursorLine cterm=NONE 
 autocmd InsertEnter * highlight CursorLineNr cterm=NONE
 autocmd InsertLeave * highlight CursorLine cterm=NONE ctermbg=darkblue
-autocmd InsertLeave * highlight CursorLineNr cterm=NONE ctermbg=darkblue
-
+autocmd InsertLeave * highlight CursorLineNr cterm=NONE ctermbg=darkblue 
 
 " Searching
 set incsearch
@@ -86,19 +85,26 @@ set completeopt=noinsert,menuone,noselect
 
 " Global Binds               MODE             YOUR KEY          EXECUTED COMMAND
 
-autocmd FileType *           inoremap         (                 ()<Space><><Esc>3hi
-autocmd FileType *           inoremap         [                 []<Space><><Esc>3hi
-autocmd FileType *           inoremap         {                 {}<Space><><Esc>3hi
-autocmd FileType *           inoremap         '                 ''<Space><><Esc>3hi
-autocmd FileType *           inoremap         "                 ""<Space><><Esc>3hi
-autocmd FileType *           inoremap         <Space><Space>    <Esc>/<>/n<Enter>vldi
+autocmd FileType *           inoremap         ((               ()<Space><><Esc>3hi
+autocmd FileType *           inoremap         [[               []<Space><><Esc>3hi
+autocmd FileType *           inoremap         {{               {}<Space><><Esc>3hi
+autocmd FileType *           inoremap         ''               ''<Space><><Esc>3hi
+autocmd FileType *           inoremap         ""               ""<Space><><Esc>3hi
 autocmd FileType *           nnoremap         <Space><Space>    /<>/n<Enter>vldi
+autocmd FileType *           inoremap         <Space><Space>    <Esc>/<>/n<Enter>vldi
+autocmd FileType *           nnoremap         <c-h>             <c-w>h
+autocmd FileType *           nnoremap         <c-j>             <c-w>j
+autocmd FileType *           nnoremap         <c-k>             <c-w>k
+autocmd FileType *           nnoremap         <c-l>             <c-w>l
+autocmd FileType *           nnoremap         <c-w>             <c-w>w
 
 """Autocomment
 autocmd BufRead * nnoremap <C-_> :Commentary<Enter><Enter>
 autocmd BufRead * nnoremap <C-\> :Commentary<Enter>k
 
+"""Nowrap
 
+autocmd Filetype !tex set nowrap 
 
 " Snakemake
 
@@ -136,6 +142,9 @@ augroup END
 
 ""Template autoload
 autocmd BufNewFile *.tex silent exe ':!cat ~/.config/nvim/templates/tex > %' | e
+
+""Wrap line
+autocmd FileType tex set linebreak
 
 ""Binds                      MODE             YOUR KEY          EXECUTED COMMAND
  
