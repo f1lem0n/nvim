@@ -1,6 +1,6 @@
 " Plugins
 call plug#begin()
- 
+
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'ap/vim-css-color'
@@ -28,24 +28,34 @@ call plug#end()
 " Basic options
 syntax on
 set number relativenumber
-set tabstop=4
-set shiftwidth=4
-set expandtab ts=4 sw=4 ai
 set encoding=utf-8
 set scrolloff=10
 set updatetime=100
 set cursorline
 set statusline="%f%m%r%h%w [%Y] [0x%02.2B]%< %F%=%4v,%4l %3p%% of %L"
+set nowrap
+set splitbelow splitright
+
+
+" Indenting
+filetype indent on
+filetype plugin indent on
+set indentexpr
+set tabstop=4
+set shiftwidth=4
+set expandtab ts=4 sw=4
+set softtabstop
 
 
 " Colors
 colorscheme slate
 hi CursorLine cterm=NONE ctermbg=darkblue
 hi CursorLineNr cterm=NONE ctermbg=darkblue
-autocmd InsertEnter * highlight CursorLine cterm=NONE 
+autocmd InsertEnter * highlight CursorLine cterm=NONE
 autocmd InsertEnter * highlight CursorLineNr cterm=NONE
 autocmd InsertLeave * highlight CursorLine cterm=NONE ctermbg=darkblue
-autocmd InsertLeave * highlight CursorLineNr cterm=NONE ctermbg=darkblue 
+autocmd InsertLeave * highlight CursorLineNr cterm=NONE ctermbg=darkblue
+
 
 " Searching
 set incsearch
@@ -98,13 +108,17 @@ autocmd FileType *           nnoremap         <c-k>             <c-w>k
 autocmd FileType *           nnoremap         <c-l>             <c-w>l
 autocmd FileType *           nnoremap         <c-w>             <c-w>w
 
+""" Autodelete trailing whitespaces on save
+autocmd BufWritePre * %s/\s\+$//e
+
+""" Folding
+autocmd BufWritePre * :mkview
+autocmd VimEnter * :loadview
+
 """Autocomment
 autocmd BufRead * nnoremap <C-_> :Commentary<Enter><Enter>
 autocmd BufRead * nnoremap <C-\> :Commentary<Enter>k
-
-"""Nowrap
-
-autocmd Filetype !tex set nowrap 
+autocmd FileType * set formatoptions-=cro
 
 " Snakemake
 
@@ -144,10 +158,11 @@ augroup END
 autocmd BufNewFile *.tex silent exe ':!cat ~/.config/nvim/templates/tex > %' | e
 
 ""Wrap line
+autocmd FileType tex set wrap
 autocmd FileType tex set linebreak
 
 ""Binds                      MODE             YOUR KEY          EXECUTED COMMAND
- 
+
 augroup tex
 
 """Compile
@@ -160,7 +175,7 @@ autocmd FileType tex         inoremap         ;b                \textbf{}<Space>
 autocmd FileType tex         inoremap         ;r                \ref{}<Space><><Esc>T{i
 autocmd FileType tex         inoremap         ;c                \cite{}<Space><><Esc>T{i
 autocmd FileType tex         inoremap         ;ni               \item<Space>
-autocmd FileType tex         inoremap         ;<Space>          ~
+autocmd FileType tex         inoremap         ;ns               ~
 autocmd FileType tex         inoremap         ;sub              \textsubscript{}<Space><><Esc>T{i
 autocmd FileType tex         inoremap         ;sup              \textsuperscript{}<Space><><Esc>T{i
 
