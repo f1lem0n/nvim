@@ -43,7 +43,8 @@
 
 \begin{document}
 
-\maketitle <>
+\maketitle
+<>
 
 \bibliographystyle{unsrt}
 \bibliography{ref.bib}

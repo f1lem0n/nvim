@@ -45,6 +45,7 @@ set expandtab ts=4 sw=4
 set smartindent
 set softtabstop
 
+
 " Colors
 colorscheme slate
 hi CursorLine cterm=NONE ctermbg=darkblue
@@ -96,17 +97,14 @@ autocmd FileType *           inoremap         [[                [] <><Esc>3hi
 autocmd FileType *           inoremap         {{                {} <><Esc>3hi
 autocmd FileType *           inoremap         '                 ''<Esc>i
 autocmd FileType *           inoremap         "                 ""<Esc>i
-autocmd FileType *           nnoremap         <leader>jj        /<>/n<CR>vldi
-autocmd FileType *           inoremap         <leader>jj        <Esc>/<>/n<CR>vldi
+autocmd FileType *           nnoremap         <leader><CR>      /<>/n<CR>vldi
+autocmd FileType *           inoremap         <leader><CR>      <Esc>/<>/n<CR>vldi
 autocmd FileType *           nnoremap         <c-h>             <c-w>h
 autocmd FileType *           nnoremap         <c-j>             <c-w>j
 autocmd FileType *           nnoremap         <c-k>             <c-w>k
 autocmd FileType *           nnoremap         <c-l>             <c-w>l
 autocmd FileType *           nnoremap         <c-w>             <c-w>w
-autocmd FileType *           nnoremap         <s-j>             $a<CR><Esc>
-autocmd FileType *           nnoremap         <s-k>             ddk$
 autocmd FileType *           nnoremap         <s-e>             $a
-autocmd FileType *           nnoremap         <s-h>             gg
 autocmd FileType *           nnoremap         <c-g>             :Rg<CR>
 autocmd FileType *           nnoremap         <c-f>             :Ag<CR>
 autocmd FileType *           nnoremap         <s-f>             :Files<CR>
@@ -116,12 +114,13 @@ autocmd BufWritePre * %s/\s\+$//e
 
 "" Folding
 autocmd BufWritePre * mkview
-autocmd VimEnter * silent loadview
+autocmd BufEnter * silent loadview
 
 "" Autocomment
 autocmd BufRead *           nnoremap          <C-_>             :Commentary<CR><CR>
 autocmd BufRead *           nnoremap          <C-\>             :Commentary<CR>k
 autocmd FileType * set formatoptions-=cro
+
 
 " Snakemake
 
@@ -172,25 +171,25 @@ augroup tex
 autocmd FileType tex         nnoremap         <F10>             :w<CR>:!rm -rf out/<CR>:!latexmk -pdf -time % && latexmk -c<CR>:!mkdir out && mv *.pdf *.bbl out/<CR>
 
 """In-text
-autocmd FileType tex         inoremap         ;i                \textit{}<Space><><Esc>T{i
-autocmd FileType tex         inoremap         $                 $$<Space><><Esc>3hi
-autocmd FileType tex         inoremap         ;b                \textbf{}<Space><><Esc>T{i
-autocmd FileType tex         inoremap         ;r                \ref{}<Space><><Esc>T{i
-autocmd FileType tex         inoremap         ;c                \cite{}<Space><><Esc>T{i
-autocmd FileType tex         inoremap         ;ni               \item<Space>
+autocmd FileType tex         inoremap         ;i                \textit{}<><Esc>T{i
+autocmd FileType tex         inoremap         $                 $$<><Esc>3hi
+autocmd FileType tex         inoremap         ;b                \textbf{}<><Esc>T{i
+autocmd FileType tex         inoremap         ;r                \ref{}<><Esc>T{i
+autocmd FileType tex         inoremap         ;c                \cite{}<><Esc>T{i
+autocmd FileType tex         inoremap         ;ni               \item
 autocmd FileType tex         inoremap         ;ns               ~
-autocmd FileType tex         inoremap         ;sub              \textsubscript{}<Space><><Esc>T{i
-autocmd FileType tex         inoremap         ;sup              \textsuperscript{}<Space><><Esc>T{i
+autocmd FileType tex         inoremap         ;sub              \textsubscript{}<><Esc>T{i
+autocmd FileType tex         inoremap         ;sup              \textsuperscript{}<><Esc>T{i
 
 """Envs
-autocmd FileType tex         inoremap         ;sec              <Esc>$a<CR><CR>\section{}<CR><CR><><Esc>2kf}i
-autocmd FileType tex         inoremap         ;ssec             <Esc>$a<CR><CR>\subsection{}<CR><CR><><Esc>2kf}i
-autocmd FileType tex         inoremap         ;sssec            <Esc>$a<CR><CR>\subsubsection{}<CR><CR><><Esc>2kf}i
-autocmd FileType tex         inoremap         ;fig          <Esc>$a<CR><CR>\begin{figure}[]<CR><Tab>\cCRing<CR>\includegraphics[width=\columnwidth]{<>}<CR>\caption{<>}<CR>\label{<>}<CR>\end{figure}<CR><CR><><Esc>7kf]i
-autocmd FileType tex         inoremap         ;eq               <Esc>$a<CR><CR>\begin{equation}<CR><CR>\label{<>}<CR>\end{equation}<CR><CR><><Esc>4ki<Tab>
-autocmd FileType tex         inoremap         ;ls               <Esc>$a<CR><CR>\begin{itemize}<CR><CR>\end{itemize}<CR><><Esc>2ki<Tab>
-autocmd FileType tex         inoremap         ;nls              <Esc>$a<CR><CR>\begin{enumerate}<CR><CR>\end{enumerate}<CR><><Esc>2ki<Tab>
-autocmd FileType tex         inoremap         ;abs              <Esc>$a<CR><CR>\begin{abstract}<CR><Tab><><CR>\end{abstract}<CR><><Esc>2ki<Tab>
+autocmd FileType tex         inoremap         ;sec              <Esc>$a<CR>\section{}<CR><><Esc>kf}i
+autocmd FileType tex         inoremap         ;ssec             <Esc>$a<CR>\subsection{}<CR><><Esc>kf}i
+autocmd FileType tex         inoremap         ;sssec            <Esc>$a<CR>\subsubsection{}<CR><><Esc>kf}i
+autocmd FileType tex         inoremap         ;fig              <Esc>$a<CR>\begin{figure}[]<CR><Tab>\cCRing<CR>\includegraphics[width=\columnwidth]{<>}<CR>\caption{<>}<CR>\label{<>}<CR>\end{figure}<CR><CR><><Esc>7kf]i
+autocmd FileType tex         inoremap         ;eq               <Esc>$a<CR>\begin{equation}<CR><CR>\label{<>}<CR>\end{equation}<CR><CR><><Esc>4ki<Tab>
+autocmd FileType tex         inoremap         ;ls               <Esc>$a<CR>\begin{itemize}<CR><CR>\end{itemize}<CR><><Esc>2ki<Tab>
+autocmd FileType tex         inoremap         ;nls              <Esc>$a<CR>\begin{enumerate}<CR><CR>\end{enumerate}<CR><><Esc>2ki<Tab>
+autocmd FileType tex         inoremap         ;abs              <Esc>$a<CR>\begin{abstract}<CR><Tab><><CR>\end{abstract}<CR><><Esc>2ki<Tab>
 
 """Env-in-env
 autocmd FileType tex         inoremap         ;spl              \begin{split}<CR><CR>\end{split}<Esc>ki<Tab><Tab>
