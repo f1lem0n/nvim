@@ -112,8 +112,8 @@ autocmd FileType *           nnoremap         <c-w>             <c-w>w
 autocmd BufWritePre * %s/\s\+$//e
 
 """ Folding
-autocmd BufWritePre * :mkview
-autocmd VimEnter * :loadview
+autocmd BufWinLeave * mkview
+autocmd BufWinEnter * silent loadview
 
 """Autocomment
 autocmd BufRead * nnoremap <C-_> :Commentary<Enter><Enter>
@@ -155,7 +155,7 @@ augroup END
 " LaTeX
 
 ""Template autoload
-autocmd BufNewFile *.tex silent exe ':!cat ~/.config/nvim/templates/tex > %' | e
+autocmd BufNewFile *.tex silent exe '!cat ~/.config/nvim/templates/tex > %' | e
 
 ""Wrap line
 autocmd FileType tex set wrap
