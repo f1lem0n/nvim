@@ -3,6 +3,7 @@
 %PACKS------------------------------
 
 \usepackage[utf8]{inputenc}
+\usepackage{times} %SELECT FONT HERE
 \usepackage[T1]{fontenc}
 \usepackage[british, polish]{babel}
 \usepackage{geometry}
@@ -21,13 +22,13 @@
 
 %SETTINGS---------------------------
 
-% \setmainfont{Times New Roman}
 \hypersetup{
     colorlinks=true,
     linkcolor={blue!50!black},
     citecolor={blue!50!black},
     urlcolor={blue!80!black}
 }
+
 % \linespread{1.25}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1em}
