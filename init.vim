@@ -99,12 +99,8 @@ autocmd FileType *           inoremap         [[                [] <><Esc>3hi
 autocmd FileType *           inoremap         {{                {} <><Esc>3hi
 autocmd FileType *           inoremap         '                 ''<Esc>i
 autocmd FileType *           inoremap         "                 ""<Esc>i
-autocmd FileType *           nnoremap         <leader><CR>      /<>/n<CR>vldi
-autocmd FileType *           inoremap         <leader><CR>      <Esc>/<>/n<CR>vldi
-autocmd FileType *           nnoremap         <c-h>             <c-w>h
-autocmd FileType *           nnoremap         <c-j>             <c-w>j
-autocmd FileType *           nnoremap         <c-k>             <c-w>k
-autocmd FileType *           nnoremap         <c-l>             <c-w>l
+autocmd FileType *           nnoremap         <c-j>             /<>/n<CR>vldi
+autocmd FileType *           inoremap         <c-j>             <Esc>/<>/n<CR>vldi
 autocmd FileType *           nnoremap         <c-w>             <c-w>w
 autocmd FileType *           nnoremap         <s-e>             $a
 autocmd FileType *           nnoremap         <c-f>             :Ag<CR>
@@ -119,8 +115,8 @@ autocmd FileType *           nnoremap         <s-k>             {
 autocmd BufWritePre * %s/\s\+$//e
 }
 "" Folding
-autocmd BufWritePre * mkview
-autocmd VimEnter * silent loadview
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview
 
 "" Autocomment
 autocmd BufRead *           nnoremap          <C-_>             :Commentary<CR>j
@@ -178,7 +174,7 @@ autocmd FileType tex set linebreak
 augroup tex
 
 """Compile
-autocmd FileType tex         nnoremap         <F10>             :w<CR>:!rm -rf out/<CR>:!latexmk -pdf -time % && latexmk -c<CR>:!mkdir out && mv *.pdf *.bbl out/<CR>
+autocmd FileType tex         nnoremap         <F10>             :w<CR>:!rm -rf out/<CR>:!latexmk -pdf -time -shell-escape % && latexmk -c<CR>:!mkdir out && mv *.pdf *.bbl out/<CR>
 
 """In-text
 autocmd FileType tex         inoremap         ;i                \textit{} <><Esc>T{i
@@ -195,7 +191,7 @@ autocmd FileType tex         inoremap         ;sup              \textsuperscript
 autocmd FileType tex         inoremap         ;sec              <Esc>$a<CR>\section{}<CR><><Esc>kf}i
 autocmd FileType tex         inoremap         ;ssec             <Esc>$a<CR>\subsection{}<CR><><Esc>kf}i
 autocmd FileType tex         inoremap         ;sssec            <Esc>$a<CR>\subsubsection{}<CR><><Esc>kf}i
-autocmd FileType tex         inoremap         ;fig              <Esc>$a<CR>\begin{figure}[]<CR><Tab>\cCRing<CR>\includegraphics[width=\columnwidth]{<>}<CR>\caption{<>}<CR>\label{<>}<CR>\end{figure}<CR><CR><><Esc>7kf]i
+autocmd FileType tex         inoremap         ;fig              <Esc>$a<CR>\begin{figure}[]<CR>\centering<CR>\includegraphics[width=\columnwidth]{<>}<CR>\caption{<>}<CR>\label{<>}<CR>\end{figure}<CR><CR><><Esc>7kf]i
 autocmd FileType tex         inoremap         ;eq               <Esc>$a<CR>\begin{equation}<CR><CR>\label{<>}<CR>\end{equation}<CR><CR><><Esc>4ki<Tab>
 autocmd FileType tex         inoremap         ;ls               <Esc>$a<CR>\begin{itemize}<CR><CR>\end{itemize}<CR><><Esc>2ki<Tab>
 autocmd FileType tex         inoremap         ;nls              <Esc>$a<CR>\begin{enumerate}<CR><CR>\end{enumerate}<CR><><Esc>2ki<Tab>
