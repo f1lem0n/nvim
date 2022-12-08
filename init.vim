@@ -27,6 +27,7 @@ call plug#end()
 
 " Basic options
 syntax on
+set nowrap
 set number relativenumber
 set encoding=utf-8
 set scrolloff=10
@@ -56,12 +57,13 @@ autocmd InsertLeave * highlight CursorLine cterm=NONE ctermbg=darkblue
 autocmd InsertLeave * highlight CursorLineNr cterm=NONE ctermbg=darkblue
 
 
-" Searching
+" Searching options
 set incsearch
 set ignorecase
 set showmatch
 set hlsearch
 set smarttab
+let g:rooter_manual_only = 1
 
 
 " Filetype detection
@@ -105,21 +107,29 @@ autocmd FileType *           nnoremap         <c-k>             <c-w>k
 autocmd FileType *           nnoremap         <c-l>             <c-w>l
 autocmd FileType *           nnoremap         <c-w>             <c-w>w
 autocmd FileType *           nnoremap         <s-e>             $a
-autocmd FileType *           nnoremap         <c-g>             :Rg<CR>
 autocmd FileType *           nnoremap         <c-f>             :Ag<CR>
+autocmd FileType *           nnoremap         <c-g>             :Rooter<CR>:Rg<CR>
 autocmd FileType *           nnoremap         <s-f>             :Files<CR>
+autocmd FileType *           xnoremap         <s-j>             }
+autocmd FileType *           xnoremap         <s-k>             {
+autocmd FileType *           nnoremap         <s-j>             }
+autocmd FileType *           nnoremap         <s-k>             {
 
 "" Autodelete trailing whitespaces on save
 autocmd BufWritePre * %s/\s\+$//e
-
+}
 "" Folding
 autocmd BufWritePre * mkview
-autocmd BufEnter * silent loadview
+autocmd VimEnter * silent loadview
 
 "" Autocomment
-autocmd BufRead *           nnoremap          <C-_>             :Commentary<CR><CR>
+autocmd BufRead *           nnoremap          <C-_>             :Commentary<CR>j
 autocmd BufRead *           nnoremap          <C-\>             :Commentary<CR>k
 autocmd FileType * set formatoptions-=cro
+
+"" Go back to cwd upon leaving Rg
+autocmd VimEnter * let iwd = getcwd()
+autocmd BufLeave * exe "cd" iwd
 
 
 " Snakemake
@@ -171,15 +181,15 @@ augroup tex
 autocmd FileType tex         nnoremap         <F10>             :w<CR>:!rm -rf out/<CR>:!latexmk -pdf -time % && latexmk -c<CR>:!mkdir out && mv *.pdf *.bbl out/<CR>
 
 """In-text
-autocmd FileType tex         inoremap         ;i                \textit{}<><Esc>T{i
-autocmd FileType tex         inoremap         $                 $$<><Esc>3hi
-autocmd FileType tex         inoremap         ;b                \textbf{}<><Esc>T{i
-autocmd FileType tex         inoremap         ;r                \ref{}<><Esc>T{i
-autocmd FileType tex         inoremap         ;c                \cite{}<><Esc>T{i
+autocmd FileType tex         inoremap         ;i                \textit{} <><Esc>T{i
+autocmd FileType tex         inoremap         $                 $$ <><Esc>3hi
+autocmd FileType tex         inoremap         ;b                \textbf{} <><Esc>T{i
+autocmd FileType tex         inoremap         ;r                \ref{} <><Esc>T{i
+autocmd FileType tex         inoremap         ;c                \cite{} <><Esc>T{i
 autocmd FileType tex         inoremap         ;ni               \item
 autocmd FileType tex         inoremap         ;ns               ~
-autocmd FileType tex         inoremap         ;sub              \textsubscript{}<><Esc>T{i
-autocmd FileType tex         inoremap         ;sup              \textsuperscript{}<><Esc>T{i
+autocmd FileType tex         inoremap         ;sub              \textsubscript{} <><Esc>T{i
+autocmd FileType tex         inoremap         ;sup              \textsuperscript{} <><Esc>T{i
 
 """Envs
 autocmd FileType tex         inoremap         ;sec              <Esc>$a<CR>\section{}<CR><><Esc>kf}i
