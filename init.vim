@@ -195,7 +195,8 @@ autocmd FileType tex         inoremap         ;fig              <Esc>$a<CR>\begi
 autocmd FileType tex         inoremap         ;eq               <Esc>$a<CR>\begin{equation}<CR><CR>\label{<>}<CR>\end{equation}<CR><CR><><Esc>4ki<Tab>
 autocmd FileType tex         inoremap         ;ls               <Esc>$a<CR>\begin{itemize}<CR><CR>\end{itemize}<CR><><Esc>2ki<Tab>
 autocmd FileType tex         inoremap         ;nls              <Esc>$a<CR>\begin{enumerate}<CR><CR>\end{enumerate}<CR><><Esc>2ki<Tab>
-autocmd FileType tex         inoremap         ;abs              <Esc>$a<CR>\begin{abstract}<CR><Tab><><CR>\end{abstract}<CR><><Esc>2ki<Tab>
+autocmd FileType tex         inoremap         ;abs              <Esc>$a<CR>\begin{abstract}<CR><><CR>\end{abstract}<CR><><Esc>2ki<Tab>
+autocmd FileType tex         inoremap         ;tab              <Esc>$a<CR>\begin{table}[]<CR>\caption{<>}<CR>\centering<CR>\label{<>}<CR>\resizebox{\columnwidth}{!}{<CR><><CR>}<CR>\end{table}<CR><><Esc>8k$i
 
 """Env-in-env
 autocmd FileType tex         inoremap         ;spl              \begin{split}<CR><CR>\end{split}<Esc>ki<Tab><Tab>
