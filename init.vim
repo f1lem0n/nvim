@@ -119,8 +119,9 @@ autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
 
 "" Autocomment
-autocmd BufRead *           nnoremap          <C-_>             :Commentary<CR>j
-autocmd BufRead *           nnoremap          <C-\>             :Commentary<CR>k
+autocmd BufRead *           nnoremap          <c-_>             :Commentary<CR>j
+autocmd BufRead *           nnoremap          <c-\>             :Commentary<CR>k
+autocmd BufRead *           nnoremap          <c-c>             :Commentary<CR>
 autocmd FileType * set formatoptions-=cro
 
 "" Go back to cwd upon leaving Rg
