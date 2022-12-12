@@ -3,10 +3,12 @@
 %PACKS------------------------------
 
 \usepackage[utf8]{inputenc}
-\usepackage{times} %SELECT FONT HERE
+\usepackage{times} % SELECT FONT HERE
 \usepackage[T1]{fontenc}
-\usepackage[british, polish]{babel}
+% \usepackage[british, polish]{babel}
+\usepackage{polski}
 \usepackage{geometry}
+\usepackage[singlelinecheck=false]{caption}
 \usepackage{gensymb}
 \usepackage{upgreek}
 \usepackage{bm}
