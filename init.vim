@@ -113,7 +113,7 @@ autocmd FileType *           nnoremap         <s-k>             {
 
 "" Autodelete trailing whitespaces on save
 autocmd BufWritePre * %s/\s\+$//e
-}
+
 "" Folding
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
