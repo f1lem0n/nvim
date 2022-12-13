@@ -37,6 +37,10 @@
 \geometry{left=2.54cm, right=2.54cm, top=2.54cm, bottom=2.54cm}
 \newcommand*{\myfont}{\fontfamily{pcr}\selectfont}
 
+\providecommand{\tightlist}{
+    \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+}
+
 \title{<>}
 \author{<>}
 \date{<>}
