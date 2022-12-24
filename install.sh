@@ -1,9 +1,9 @@
 #!/bin/bash
 
 sudo apt install -y  \
-    curl
-    neovim
-    yarn
+    curl             \
+    neovim           \
+    yarn             \
     silversearcher-ag
 
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim \
