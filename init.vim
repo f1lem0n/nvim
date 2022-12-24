@@ -97,7 +97,6 @@ let mapleader = ";"
 autocmd FileType *           inoremap         ((                () <><Esc>3hi
 autocmd FileType *           inoremap         [[                [] <><Esc>3hi
 autocmd FileType *           inoremap         {{                {} <><Esc>3hi
-autocmd FileType *           inoremap         '                 ''<Esc>i
 autocmd FileType *           inoremap         "                 ""<Esc>i
 autocmd FileType *           nnoremap         <c-j>             /<>/n<CR>vldi
 autocmd FileType *           inoremap         <c-j>             <Esc>/<>/n<CR>vldi
@@ -105,7 +104,6 @@ autocmd FileType *           nnoremap         <c-w>             <c-w>w
 autocmd FileType *           nnoremap         <s-e>             $a
 autocmd FileType *           nnoremap         <c-f>             :Ag<CR>
 autocmd FileType *           nnoremap         <c-g>             :Rooter<CR>:Rg<CR>
-autocmd FileType *           nnoremap         <s-f>             :Files<CR>
 autocmd FileType *           xnoremap         <s-j>             }
 autocmd FileType *           xnoremap         <s-k>             {
 autocmd FileType *           nnoremap         <s-j>             }
@@ -113,7 +111,7 @@ autocmd FileType *           nnoremap         <s-k>             {
 
 "" Autodelete trailing whitespaces on save
 autocmd BufWritePre * %s/\s\+$//e
-}
+
 "" Folding
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
@@ -121,6 +119,7 @@ autocmd BufWinEnter *.* silent loadview
 "" Autocomment
 autocmd BufRead *           nnoremap          <C-_>             :Commentary<CR>j
 autocmd BufRead *           nnoremap          <C-\>             :Commentary<CR>k
+autocmd BufRead *           nnoremap          <C-c>             :Commentary<CR>
 autocmd FileType * set formatoptions-=cro
 
 "" Go back to cwd upon leaving Rg
