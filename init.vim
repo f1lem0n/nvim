@@ -97,7 +97,6 @@ let mapleader = ";"
 autocmd FileType *           inoremap         ((                () <><Esc>3hi
 autocmd FileType *           inoremap         [[                [] <><Esc>3hi
 autocmd FileType *           inoremap         {{                {} <><Esc>3hi
-autocmd FileType *           inoremap         '                 ''<Esc>i
 autocmd FileType *           inoremap         "                 ""<Esc>i
 autocmd FileType *           nnoremap         <c-j>             /<>/n<CR>vldi
 autocmd FileType *           inoremap         <c-j>             <Esc>/<>/n<CR>vldi
@@ -122,6 +121,7 @@ autocmd BufWinEnter *.* silent loadview
 autocmd BufRead *           nnoremap          <c-_>             :Commentary<CR>j
 autocmd BufRead *           nnoremap          <c-\>             :Commentary<CR>k
 autocmd BufRead *           nnoremap          <c-c>             :Commentary<CR>
+
 autocmd FileType * set formatoptions-=cro
 
 "" Go back to cwd upon leaving Rg

@@ -22,7 +22,7 @@ Enjoy using my build!
 
 ## Version
 
-**As for now, the installation script is dedicated to debian 
+**As for now, the installation script is dedicated to debian
 based software using apt package manager.**
 
 - NEOVIM v0.4.4
