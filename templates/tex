@@ -3,10 +3,12 @@
 %PACKS------------------------------
 
 \usepackage[utf8]{inputenc}
-\usepackage{times} %SELECT FONT HERE
+\usepackage{times} % SELECT FONT HERE
 \usepackage[T1]{fontenc}
-\usepackage[british, polish]{babel}
+% \usepackage[british, polish]{babel}
+\usepackage{polski}
 \usepackage{geometry}
+\usepackage[singlelinecheck=false]{caption}
 \usepackage{gensymb}
 \usepackage{upgreek}
 \usepackage{bm}
@@ -34,6 +36,10 @@
 \setlength{\parskip}{1em}
 \geometry{left=2.54cm, right=2.54cm, top=2.54cm, bottom=2.54cm}
 \newcommand*{\myfont}{\fontfamily{pcr}\selectfont}
+
+\providecommand{\tightlist}{
+    \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+}
 
 \title{<>}
 \author{<>}

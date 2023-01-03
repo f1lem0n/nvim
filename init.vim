@@ -104,6 +104,7 @@ autocmd FileType *           nnoremap         <c-w>             <c-w>w
 autocmd FileType *           nnoremap         <s-e>             $a
 autocmd FileType *           nnoremap         <c-f>             :Ag<CR>
 autocmd FileType *           nnoremap         <c-g>             :Rooter<CR>:Rg<CR>
+autocmd FileType *           nnoremap         <c-s>             :Files<CR>
 autocmd FileType *           xnoremap         <s-j>             }
 autocmd FileType *           xnoremap         <s-k>             {
 autocmd FileType *           nnoremap         <s-j>             }
@@ -117,9 +118,10 @@ autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
 
 "" Autocomment
-autocmd BufRead *           nnoremap          <C-_>             :Commentary<CR>j
-autocmd BufRead *           nnoremap          <C-\>             :Commentary<CR>k
-autocmd BufRead *           nnoremap          <C-c>             :Commentary<CR>
+autocmd BufRead *           nnoremap          <c-_>             :Commentary<CR>j
+autocmd BufRead *           nnoremap          <c-\>             :Commentary<CR>k
+autocmd BufRead *           nnoremap          <c-c>             :Commentary<CR>
+
 autocmd FileType * set formatoptions-=cro
 
 "" Go back to cwd upon leaving Rg
@@ -158,7 +160,6 @@ autocmd FileType python      nnoremap         <F10>             :w<CR>:!python3 
 
 augroup END
 
-
 " LaTeX
 
 ""Template autoload
@@ -179,10 +180,10 @@ autocmd FileType tex         nnoremap         <F10>             :w<CR>:!rm -rf o
 autocmd FileType tex         inoremap         ;i                \textit{} <><Esc>T{i
 autocmd FileType tex         inoremap         $                 $$ <><Esc>3hi
 autocmd FileType tex         inoremap         ;b                \textbf{} <><Esc>T{i
-autocmd FileType tex         inoremap         ;r                \ref{} <><Esc>T{i
+autocmd FileType tex         inoremap         ;r                ~\ref{} <><Esc>T{i
 autocmd FileType tex         inoremap         ;c                \cite{} <><Esc>T{i
+autocmd FileType tex         inoremap         ;mrm              ~\mathrm{} <><Esc>T{i
 autocmd FileType tex         inoremap         ;ni               \item
-autocmd FileType tex         inoremap         ;ns               ~
 autocmd FileType tex         inoremap         ;sub              \textsubscript{} <><Esc>T{i
 autocmd FileType tex         inoremap         ;sup              \textsuperscript{} <><Esc>T{i
 
@@ -192,8 +193,8 @@ autocmd FileType tex         inoremap         ;ssec             <Esc>$a<CR>\subs
 autocmd FileType tex         inoremap         ;sssec            <Esc>$a<CR>\subsubsection{}<CR><><Esc>kf}i
 autocmd FileType tex         inoremap         ;fig              <Esc>$a<CR>\begin{figure}[]<CR>\centering<CR>\includegraphics[width=\columnwidth]{<>}<CR>\caption{<>}<CR>\label{<>}<CR>\end{figure}<CR><CR><><Esc>7kf]i
 autocmd FileType tex         inoremap         ;eq               <Esc>$a<CR>\begin{equation}<CR><CR>\label{<>}<CR>\end{equation}<CR><CR><><Esc>4ki<Tab>
-autocmd FileType tex         inoremap         ;ls               <Esc>$a<CR>\begin{itemize}<CR><CR>\end{itemize}<CR><><Esc>2ki<Tab>
-autocmd FileType tex         inoremap         ;nls              <Esc>$a<CR>\begin{enumerate}<CR><CR>\end{enumerate}<CR><><Esc>2ki<Tab>
+autocmd FileType tex         inoremap         ;ls               <Esc>$a<CR>\begin{itemize}<CR>\tightlist<CR><CR>\end{itemize}<CR><><Esc>2ki<Tab>
+autocmd FileType tex         inoremap         ;nls              <Esc>$a<CR>\begin{enumerate}<CR>\tightlist<CR><CR>\end{enumerate}<CR><><Esc>2ki<Tab>
 autocmd FileType tex         inoremap         ;abs              <Esc>$a<CR>\begin{abstract}<CR><><CR>\end{abstract}<CR><><Esc>2ki<Tab>
 autocmd FileType tex         inoremap         ;tab              <Esc>$a<CR>\begin{table}[]<CR>\caption{<>}<CR>\centering<CR>\label{<>}<CR>\resizebox{\columnwidth}{!}{<CR><><CR>}<CR>\end{table}<CR><><Esc>8k$i
 
